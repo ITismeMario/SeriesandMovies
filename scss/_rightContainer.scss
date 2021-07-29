@@ -1,0 +1,84 @@
+.right-container {
+	color: $secondary-color;
+	background: rgba(15, 15, 15, 0.93);
+	width: 100%;
+	border-color: rgba(255, 255, 255, 0.08);
+
+	.display-title {
+		padding: 1em;
+		background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(0, 0, 0));
+	}
+
+	.summary-container {
+		padding-top: 2em;
+	}
+
+	.summary {
+		padding-top: 1em;
+		padding-bottom: 1em;
+		padding-right: 2em;
+
+		h6 {
+			font-size: 0.7em;
+			padding-top: 1em;
+			padding-bottom: 0.5em;
+			padding-left: 1em;
+		}
+
+		.line1 {
+			border-bottom: 1px solid $terciary-color;
+		}
+
+		.description {
+			padding-left: 1em;
+			padding-top: 1em;
+		}
+
+		.display-footer {
+			padding-left: 1em;
+			display: flex;
+
+			.display-fig {
+				padding-left: 0.5em;
+				.rating-icon {
+					color: #ccdd00;
+				}
+			}
+			.display-score {
+				padding-left: 0.5em;
+			}
+		}
+
+		.display-cast-header {
+			padding-top: 2em;
+			padding-left: 1em;
+			font-size: 0.7em;
+			font-weight: bold;
+		}
+
+		.display-cast {
+			padding-left: 1em;
+			padding-top: 0.5em;
+			.display-actors {
+				padding-top: 0.2em;
+				display: flex;
+				.display-role {
+					padding-left: 0.3em;
+				}
+			}
+		}
+	}
+
+	.image-container {
+		padding-top: 2em;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	.display-performer {
+		color: #acb728;
+		font-weight: bold;
+	}
+}

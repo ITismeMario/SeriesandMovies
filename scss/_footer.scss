@@ -1,0 +1,71 @@
+.footer {
+	margin-left: 0;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	padding: 1em;
+	width: 100%;
+	height: auto;
+	background: rgba(15, 15, 15, 0.93);
+	color: $secondary-color;
+
+	.images-header {
+		display: flex;
+		justify-content: center;
+		font-weight: bolder;
+	}
+
+	.images-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		.poster {
+			padding-top: 2em;
+			img {
+				cursor: pointer;
+				width: 320px;
+				height: 212px;
+			}
+		}
+	}
+
+	.pagination {
+		display: flex;
+		justify-content: center;
+		margin-top: 2em;
+
+		button {
+			margin-left: 0.5em;
+			margin-right: 0.5em;
+			font-weight: bold;
+			color: $secondary-color;
+			border: none;
+			background: rgba(15, 15, 15, 0.93);
+			border-radius: 50%;
+			width: 2.5em;
+			transition: all 0.2s;
+
+			&:hover {
+				background-color: rgba(grey, $alpha: 0.3);
+			}
+
+			span {
+				font-weight: bold;
+				padding-left: 0.2em;
+				padding-right: 0.2em;
+			}
+
+			.arrow-icon {
+				// height: 1em;
+				color: $secondary-color;
+			}
+		}
+
+		.current-page {
+			margin-left: 1em;
+			margin-right: 1em;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+	}
+}

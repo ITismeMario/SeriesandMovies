@@ -1,0 +1,72 @@
+.left-container {
+	ul {
+		list-style-type: none;
+		padding: 0;
+		height: ($preview-height * 5); // $preview-height = 1 serie/movie element
+		overflow: auto;
+
+		.preview-results {
+			background: rgba(15, 15, 15, 0.93);
+
+			.result-item {
+				display: flex;
+				background-color: rgba($primary-color, $alpha: 0.6);
+
+				&:hover {
+					background-color: rgba(grey, $alpha: 0.3);
+				}
+			}
+
+			.preview-info {
+				overflow: hidden;
+				padding-left: 1em;
+				color: $secondary-color;
+
+				.preview-name {
+					padding-top: 0.8em;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+					font-weight: bold;
+				}
+
+				.preview-year {
+					padding: 0;
+					margin: 0;
+					font-size: 0.9em;
+				}
+
+				.preview-type {
+					padding: 0;
+					margin: 0;
+					font-size: 0.9em;
+				}
+			}
+
+			.preview-poster {
+				img {
+					width: $preview-width;
+					height: $preview-height;
+				}
+			}
+		}
+
+		.loading-animation {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			height: 50%;
+			color: $secondary-color;
+			text-align: center;
+
+			p {
+				padding-top: 0.2em;
+			}
+
+			img {
+				height: 80px;
+				width: auto;
+			}
+		}
+	}
+}
