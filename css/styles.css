@@ -93,6 +93,11 @@
   padding-top: 2em;
 }
 
+.right-container .summary-container .line2 {
+  margin-right: 2em;
+  border-bottom: 1px solid #bebebe;
+}
+
 .right-container .summary {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -134,29 +139,6 @@
   padding-left: 0.5em;
 }
 
-.right-container .summary .display-cast-header {
-  padding-top: 2em;
-  padding-left: 1em;
-  font-size: 0.7em;
-  font-weight: bold;
-}
-
-.right-container .summary .display-cast {
-  padding-left: 1em;
-  padding-top: 0.5em;
-}
-
-.right-container .summary .display-cast .display-actors {
-  padding-top: 0.2em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.right-container .summary .display-cast .display-actors .display-role {
-  padding-left: 0.3em;
-}
-
 .right-container .image-container {
   padding-top: 2em;
 }
@@ -169,6 +151,29 @@
 .right-container .display-performer {
   color: #acb728;
   font-weight: bold;
+}
+
+.display-cast-header {
+  padding-left: 1em;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.display-cast {
+  padding-left: 1em;
+  padding-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.display-cast .display-actors {
+  padding-top: 0.2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.display-cast .display-actors .display-role {
+  padding-left: 0.3em;
 }
 
 .footer {
