@@ -6,7 +6,18 @@ class PerformersView extends View {
 	_message = '';
 
 	_generateMarkup() {
-		return this._data.map((actor) => this._generateMarkupPreview(actor)).join('');
+		console.log(Array.isArray(this._data));
+		console.log(this._data);
+		//prettier-ignore
+		if (Array.isArray(this._data) && this._data.length !== 0)
+             return this._data.map((actor) => this._generateMarkupPreview(actor)).join('');
+		else
+			return `   
+        <div class="display-actors">
+            <div class="display-performer">No performers data is available</div>
+            <div class="display-role"></div>
+        </div>
+                `;
 	}
 
 	_generateMarkupPreview(actor) {
