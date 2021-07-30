@@ -1,14 +1,16 @@
-import { API_CURRENT_COUNTRY, API_IMAGES_LIMIT, API_URL_IMAGES, API_URL_OVERVIEW, API_URL_TITLE } from './config.js';
+import { API_CURRENT_COUNTRY, API_IMAGES_LIMIT, API_URL_IMAGES, API_URL_OVERVIEW, API_URL_TITLE, RES_PER_PAGE } from './config.js';
 import { getJSON } from './helpers.js';
 
 export const state = {
+	currrentShow: {},
 	search: {
 		query: '',
 		results: [],
-		// resultsPerPage: RES_PER_PAGE,
-		// page: 1,
+		resultsPerPage: RES_PER_PAGE,
+		page: 1,
 	},
 	titleId: '',
+	titleIndex: 0,
 	images: [],
 	bookmarks: [],
 };
@@ -68,15 +70,13 @@ const getPerformersRoles = function (principals) {
 export const loadOverviewData = async function (titleId) {
 	try {
 		const response = await getJSON(`${API_URL_OVERVIEW}${titleId}${API_CURRENT_COUNTRY}`);
-		const titleIndex = state.search.results.findIndex((show) => show.id === titleId);
-		let foundTitle = state.search.results[titleIndex];
+		state.titleIndex = state.search.results.findIndex((show) => show.id === titleId);
+		state.currrentShow = state.search.results[state.titleIndex];
 
-		foundTitle.rating = response.ratings.rating;
-		foundTitle.genres = response.genres;
-		foundTitle.summary = response.plotSummary?.text || response.plotOutline?.text;
-		foundTitle.principals = getPerformersRoles(foundTitle.originalPrincipals) ?? 'Unknown Performers';
-
-		return titleIndex;
+		state.currrentShow.rating = response.ratings.rating ?? 'Unrated';
+		state.currrentShow.genres = response.genres;
+		state.currrentShow.summary = response.plotSummary?.text || response.plotOutline?.text || 'No description available for this show';
+		state.currrentShow.principals = getPerformersRoles(state.currrentShow.originalPrincipals) ?? 'Unknown Performers';
 	} catch (err) {
 		throw err;
 	}
