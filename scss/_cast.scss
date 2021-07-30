@@ -1,0 +1,19 @@
+.display-cast-header {
+	// padding-top: 2em;
+	padding-left: 1em;
+	font-size: 0.7em;
+	font-weight: bold;
+}
+
+.display-cast {
+	padding-left: 1em;
+	padding-top: 0.5em;
+	margin-bottom: 1em;
+	.display-actors {
+		padding-top: 0.2em;
+		display: flex;
+		.display-role {
+			padding-left: 0.3em;
+		}
+	}
+}
