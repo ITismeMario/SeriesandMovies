@@ -7,8 +7,8 @@ export default class View {
 	 * @param {*} render
 	 * @returns
 	 */
-	render(data, render = true) {
-		if (!data || (Array.isArray(data) && data.length === 0)) return this.renderError();
+	render(data) {
+		if (!data || (Array.isArray(data) && data.length === 0)) return this.displayError();
 
 		this._data = data;
 		const markup = this._generateMarkup();
