@@ -41,13 +41,18 @@ const controlGetOverview = async function () {
 
 		document.dispatchEvent(eventImages);
 	} catch (err) {
-		resultsView.displayError();
+		overviewView.displayError();
 		console.error(err);
 	}
 };
 
 const controlGetPerformers = function () {
-	performersView.render(model.state.currrentShow.principals);
+	try {
+		performersView.render(model.state.currrentShow.principals);
+	} catch (err) {
+		performersView.displayError();
+		console.error(err);
+	}
 };
 
 const controlGetImages = async function () {
@@ -60,7 +65,7 @@ const controlGetImages = async function () {
 
 		modalWindow.suscribeImages();
 	} catch (err) {
-		resultsView.displayError();
+		imagesView.displayError();
 		console.error(err);
 	}
 };

@@ -6,7 +6,13 @@
 
 	.display-title {
 		padding: 1em;
+		display: flex;
+		flex-direction: column;
 		background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(0, 0, 0));
+		p {
+			padding: 0;
+			margin: 0;
+		}
 	}
 
 	.summary-container {
