@@ -11,6 +11,11 @@
 
 	.summary-container {
 		padding-top: 2em;
+
+		.line2 {
+			margin-right: 2em;
+			border-bottom: 1px solid $terciary-color;
+		}
 	}
 
 	.summary {
@@ -46,25 +51,6 @@
 			}
 			.display-score {
 				padding-left: 0.5em;
-			}
-		}
-
-		.display-cast-header {
-			padding-top: 2em;
-			padding-left: 1em;
-			font-size: 0.7em;
-			font-weight: bold;
-		}
-
-		.display-cast {
-			padding-left: 1em;
-			padding-top: 0.5em;
-			.display-actors {
-				padding-top: 0.2em;
-				display: flex;
-				.display-role {
-					padding-left: 0.3em;
-				}
 			}
 		}
 	}
