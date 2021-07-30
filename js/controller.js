@@ -3,10 +3,10 @@ import resultsView from './views/resultsView.js';
 import searchView from './views/searchView.js';
 import overviewView from './views/overviewView.js';
 import imagesView from './views/imagesView.js';
+import performersView from './views/performersView.js';
 import modalWindow from './modalWindow.js';
 
 const eventImages = new Event('onOverviewLoaded'); //The event will load and display the images (the handler is in imagesView)
-const imgContainer = document.querySelector('.images-container');
 
 const controlFindTitle = async function () {
 	try {
@@ -31,18 +31,23 @@ const controlGetOverview = async function () {
 		model.state.titleId = overviewView.getTitleId();
 		if (!model.state.titleId) return;
 
-		const titleIndex = await model.loadOverviewData(model.state.titleId);
-		if (titleIndex == null && titleIndex != 0) return;
+		await model.loadOverviewData(model.state.titleId);
 
-		overviewView.render(model.state.search.results[titleIndex]);
+		if (model.state.titleIndex == null && model.state.titleIndex != 0) return;
 
-		overviewView.generateActorsMarkup();
+		overviewView.render(model.state.currrentShow);
+
+		controlGetPerformers();
 
 		document.dispatchEvent(eventImages);
 	} catch (err) {
 		resultsView.displayError();
 		console.error(err);
 	}
+};
+
+const controlGetPerformers = function () {
+	performersView.render(model.state.currrentShow.principals);
 };
 
 const controlGetImages = async function () {
