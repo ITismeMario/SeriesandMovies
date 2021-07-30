@@ -6,7 +6,6 @@ class PerformersView extends View {
 	_message = '';
 
 	_generateMarkup() {
-		console.log(`Actores ${this._data}`);
 		return this._data.map((actor) => this._generateMarkupPreview(actor)).join('');
 	}
 
