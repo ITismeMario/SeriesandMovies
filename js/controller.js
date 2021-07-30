@@ -27,6 +27,7 @@ const controlFindTitle = async function () {
 const controlGetOverview = async function () {
 	try {
 		overviewView.displayLoading();
+		clearPerformers();
 
 		model.state.titleId = overviewView.getTitleId();
 		if (!model.state.titleId) return;
@@ -68,6 +69,15 @@ const controlGetImages = async function () {
 		imagesView.displayError();
 		console.error(err);
 	}
+};
+
+/**
+ * This is a patch for bad HTML design, used to clear a html tag at the right time
+ */
+const clearPerformers = function () {
+	console.log('Cleaning performers');
+	let htmlPerformers = document.querySelector('.display-cast');
+	htmlPerformers.innerHTML = '';
 };
 
 const init = function () {
