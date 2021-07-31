@@ -18,7 +18,6 @@ const controlFindTitle = async function () {
 
 		await model.loadSearchFindTitle(query);
 
-		console.log(model.state.search.results);
 		resultsView.render(model.state.search.results);
 	} catch (err) {
 		resultsView.displayError();
@@ -92,8 +91,8 @@ const clearPerformers = function () {
 const init = function () {
 	searchView.addHandlerSearch(controlFindTitle);
 	overviewView.addHandlerRender(controlGetOverview);
-	imagesView.addHandlerDisplayImages(controlGetImages);
-	paginationView.addHandlerClick(controlPagination);
-	modalWindow.suscribeCloseModal();
+	// imagesView.addHandlerDisplayImages(controlGetImages);
+	// paginationView.addHandlerClick(controlPagination);
+	// modalWindow.suscribeCloseModal();
 };
 init();

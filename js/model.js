@@ -65,8 +65,17 @@ export const getSearchResultsPage = function (currPage = state.currentPage) {
  * @returns Array of elements [actorName, [rolesPlayed]]
  */
 const getPerformersRoles = function (principals) {
+	console.log(principals);
 	if (!principals) return;
-	let performersList = principals.map((actor) => [actor.name, actor.roles.map((role) => role.character)]);
+
+	let performersList = [];
+
+	//Check if the property "roles" exist (otherwise we only have actor names but not their roles played)
+	let rolesExist = principals.every((actor) => actor.hasOwnProperty('roles'));
+
+	if (rolesExist) performersList = principals.map((actor) => [actor.name, actor.roles.map((role) => role.character)]);
+	else performersList = principals.map((actor) => [actor.name, ['No role data is available']]);
+
 	return performersList;
 };
 
