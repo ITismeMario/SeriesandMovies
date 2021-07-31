@@ -2,8 +2,9 @@ import * as model from './model.js';
 import resultsView from './views/resultsView.js';
 import searchView from './views/searchView.js';
 import overviewView from './views/overviewView.js';
-import imagesView from './views/imagesView.js';
 import performersView from './views/performersView.js';
+import imagesView from './views/imagesView.js';
+import paginationView from './views/paginationView.js';
 import modalWindow from './modalWindow.js';
 
 const eventImages = new Event('onOverviewLoaded'); //The event will load and display the images (the handler is in imagesView)
@@ -62,7 +63,9 @@ const controlGetImages = async function () {
 
 		await model.loadImages(model.state.titleId);
 
-		imagesView.render(model.state.images);
+		// imagesView.render(model.state.images);
+		console.log(model.state.images);
+		imagesView.render(model.getSearchResultsPage());
 
 		modalWindow.suscribeImages();
 	} catch (err) {
@@ -71,11 +74,19 @@ const controlGetImages = async function () {
 	}
 };
 
+const controlPagination = function (goToPage) {
+	//1. Render new results
+	// resultsView.render(model.state.search.results);
+	resultsView.render(model.getSearchResultsPage(goToPage));
+
+	//2. renderNEW  pagination buttons
+	// paginationView.render(model.state.search);
+};
+
 /**
  * This is a patch for bad HTML design, used to clear a html tag at the right time
  */
 const clearPerformers = function () {
-	console.log('Cleaning performers');
 	let htmlPerformers = document.querySelector('.display-cast');
 	htmlPerformers.innerHTML = '';
 };
@@ -84,7 +95,7 @@ const init = function () {
 	searchView.addHandlerSearch(controlFindTitle);
 	overviewView.addHandlerRender(controlGetOverview);
 	imagesView.addHandlerDisplayImages(controlGetImages);
+	paginationView.addHandlerClick(controlPagination);
 	modalWindow.suscribeCloseModal();
-	modalWindow.suscribeImages();
 };
 init();
