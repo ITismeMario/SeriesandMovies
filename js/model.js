@@ -52,13 +52,9 @@ export const loadSearchFindTitle = async function (query) {
 };
 
 export const getSearchResultsPage = function (currPage = state.currentPage) {
-	console.log(`getSearchResultsPage RUNNING`);
-
 	state.currentPage = currPage;
 	const start = (currPage - 1) * state.imagesPerPage;
 	const end = currPage * state.imagesPerPage;
-
-	console.log(state.images.slice(start, end));
 
 	return state.images.slice(start, end);
 };
