@@ -91,8 +91,8 @@ const clearPerformers = function () {
 const init = function () {
 	searchView.addHandlerSearch(controlFindTitle);
 	overviewView.addHandlerRender(controlGetOverview);
-	// imagesView.addHandlerDisplayImages(controlGetImages);
-	// paginationView.addHandlerClick(controlPagination);
-	// modalWindow.suscribeCloseModal();
+	imagesView.addHandlerDisplayImages(controlGetImages);
+	paginationView.addHandlerClick(controlPagination);
+	modalWindow.suscribeCloseModal();
 };
 init();
