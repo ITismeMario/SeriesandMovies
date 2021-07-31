@@ -6,8 +6,6 @@ class PerformersView extends View {
 	_message = '';
 
 	_generateMarkup() {
-		console.log(Array.isArray(this._data));
-		console.log(this._data);
 		//prettier-ignore
 		if (Array.isArray(this._data) && this._data.length !== 0)
              return this._data.map((actor) => this._generateMarkupPreview(actor)).join('');
