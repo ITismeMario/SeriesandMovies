@@ -18,6 +18,7 @@ const controlFindTitle = async function () {
 
 		await model.loadSearchFindTitle(query);
 
+		console.log(model.state.search.results);
 		resultsView.render(model.state.search.results);
 	} catch (err) {
 		resultsView.displayError();
@@ -63,11 +64,11 @@ const controlGetImages = async function () {
 
 		await model.loadImages(model.state.titleId);
 
-		// imagesView.render(model.state.images);
-		console.log(model.state.images);
 		imagesView.render(model.getSearchResultsPage());
 
 		modalWindow.suscribeImages();
+
+		paginationView.render(model.state);
 	} catch (err) {
 		imagesView.displayError();
 		console.error(err);
@@ -75,12 +76,9 @@ const controlGetImages = async function () {
 };
 
 const controlPagination = function (goToPage) {
-	//1. Render new results
-	// resultsView.render(model.state.search.results);
-	resultsView.render(model.getSearchResultsPage(goToPage));
+	imagesView.render(model.getSearchResultsPage(goToPage));
 
-	//2. renderNEW  pagination buttons
-	// paginationView.render(model.state.search);
+	paginationView.render(model.state);
 };
 
 /**
