@@ -6,12 +6,12 @@ export const state = {
 	search: {
 		query: '',
 		results: [],
-		resultsPerPage: RES_PER_PAGE,
-		page: 1,
 	},
 	titleId: '',
 	titleIndex: 0,
 	images: [],
+	imagesPerPage: RES_PER_PAGE,
+	currentPage: 1,
 	bookmarks: [],
 };
 
@@ -49,6 +49,18 @@ export const loadSearchFindTitle = async function (query) {
 	} catch (err) {
 		throw err;
 	}
+};
+
+export const getSearchResultsPage = function (currPage = state.currentPage) {
+	console.log(`getSearchResultsPage RUNNING`);
+
+	state.currentPage = currPage;
+	const start = (currPage - 1) * state.imagesPerPage;
+	const end = currPage * state.imagesPerPage;
+
+	console.log(state.images.slice(start, end));
+
+	return state.images.slice(start, end);
 };
 
 /**
