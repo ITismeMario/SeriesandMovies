@@ -28,6 +28,7 @@ const controlFindTitle = async function () {
 const controlGetOverview = async function () {
 	try {
 		overviewView.displayLoading();
+
 		clearPerformers();
 
 		model.state.titleId = overviewView.getTitleId();
@@ -77,6 +78,8 @@ const controlGetImages = async function () {
 const controlPagination = function (goToPage) {
 	imagesView.render(model.getSearchResultsPage(goToPage));
 
+	modalWindow.suscribeImages();
+
 	paginationView.render(model.state);
 };
 
@@ -94,5 +97,6 @@ const init = function () {
 	imagesView.addHandlerDisplayImages(controlGetImages);
 	paginationView.addHandlerClick(controlPagination);
 	modalWindow.suscribeCloseModal();
+	modalWindow.addHandlerGoToImage(controlNextPreviousImg);
 };
 init();
