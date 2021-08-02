@@ -21,14 +21,9 @@ class ImagesView extends View {
 		//prettier-ignore
 		return `   
         <div class="poster">
-            <img src="${image.url}" class="shrunk-img" alt="${image.caption}"/>
+            <img src="${image.url}" data-index="${image.index}" class="shrunk-img" alt="${image.caption}"/>
         </div>
                 `;
-		// return `
-		// <div class="poster">
-		//     <a href="#"><img src="${image.url}" class="shrunk-img" alt="${image.caption}" loading="lazy"/></a>
-		// </div>
-		//         `;
 	}
 }
 
