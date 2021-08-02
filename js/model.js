@@ -65,7 +65,6 @@ export const getSearchResultsPage = function (currPage = state.currentPage) {
  * @returns Array of elements [actorName, [rolesPlayed]]
  */
 const getPerformersRoles = function (principals) {
-	console.log(principals);
 	if (!principals) return;
 
 	let performersList = [];
@@ -102,10 +101,11 @@ export const loadOverviewData = async function (titleId) {
 export const loadImages = async function (titleId) {
 	try {
 		const response = await getJSON(`${API_URL_IMAGES}${titleId}${API_IMAGES_LIMIT}`);
-		state.images = response.images.map((img) => {
+		state.images = response.images.map((img, imgIndex) => {
 			return {
 				url: img.url,
 				caption: img.caption,
+				index: imgIndex,
 			};
 		});
 	} catch (err) {
