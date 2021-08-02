@@ -97,6 +97,6 @@ const init = function () {
 	imagesView.addHandlerDisplayImages(controlGetImages);
 	paginationView.addHandlerClick(controlPagination);
 	modalWindow.suscribeCloseModal();
-	modalWindow.addHandlerGoToImage(controlNextPreviousImg);
+	modalWindow.suscribeGoToImage();
 };
 init();
