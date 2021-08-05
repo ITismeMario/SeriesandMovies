@@ -12,7 +12,7 @@ export const state = {
 	images: [],
 	imagesPerPage: RES_PER_PAGE,
 	currentPage: 1,
-	bookmarks: [],
+	userRating: [],
 };
 
 /**
@@ -112,3 +112,34 @@ export const loadImages = async function (titleId) {
 		throw err;
 	}
 };
+
+//____________________________________
+
+export const addUserRating = function (movieRating) {
+	state.userRating.unshift(movieRating);
+
+	saveRating();
+};
+
+const saveRating = function () {
+	localStorage.setItem('localRating', JSON.stringify(state.userRating));
+	alert('UPDATED: your rating for this show has been saved');
+};
+
+/**
+ * Checks if the displayed show has a rating granted by the user already
+ * @returns {number} the rating
+ */
+export const loadUserRating = function () {
+	let displayedShowRating = state.userRating.find((show) => show.id === state.titleId);
+
+	if (!displayedShowRating) return;
+
+	return displayedShowRating.rating;
+};
+
+const init = function () {
+	const storage = localStorage.getItem('localRating');
+	if (storage) state.userRating = JSON.parse(storage);
+};
+init();

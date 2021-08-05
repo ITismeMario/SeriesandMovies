@@ -6,6 +6,7 @@ import performersView from './views/performersView.js';
 import imagesView from './views/imagesView.js';
 import paginationView from './views/paginationView.js';
 import modalWindow from './modalWindow.js';
+import userRatingView from './views/userRatingView.js';
 
 const eventImages = new Event('onOverviewLoaded'); //The event will load and display the images (the handler is in imagesView)
 
@@ -40,6 +41,12 @@ const controlGetOverview = async function () {
 
 		overviewView.render(model.state.currrentShow);
 
+		let userRating = model.loadUserRating();
+
+		if (userRating) userRatingView.displayUserRating(userRating);
+
+		userRatingView.addHandlerAddRating(controlAddUserRating); //just suscribing, it does nothing until the button is clicked
+
 		controlGetPerformers();
 
 		document.dispatchEvent(eventImages);
@@ -54,6 +61,19 @@ const controlGetPerformers = function () {
 		performersView.render(model.state.currrentShow.principals);
 	} catch (err) {
 		performersView.displayError();
+		console.error(err);
+	}
+};
+
+/**
+ *
+ * @param {number} rating Rating granted by the user, saved in the localStorage
+ */
+const controlAddUserRating = function (rating) {
+	try {
+		model.addUserRating(rating);
+	} catch (err) {
+		userRatingView.displayError();
 		console.error(err);
 	}
 };
