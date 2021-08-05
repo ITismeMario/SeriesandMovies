@@ -7,7 +7,7 @@ class ImagesView extends View {
 
 	/**
 	 *
-	 * @param {function} fnHandler it executes controlGetImages in control.js
+	 * @param {function} fnHandler control.controlGetImages()
 	 */
 	addHandlerDisplayImages(fnHandler) {
 		document.addEventListener('onOverviewLoaded', fnHandler);

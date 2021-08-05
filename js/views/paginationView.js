@@ -3,14 +3,18 @@ import View from './View.js';
 class PaginationView extends View {
 	_parentElement = document.querySelector('.pagination');
 
-	addHandlerClick(handler) {
+	/**
+	 *
+	 * @param {function} fnHandler control.controlPagination()
+	 */
+	addHandlerClick(fnHandler) {
 		this._parentElement.addEventListener('click', function (e) {
 			const btn = e.target.closest('.btn-inline');
 
 			if (!btn) return;
 
 			const goToPage = +btn.dataset.goto;
-			handler(goToPage);
+			fnHandler(goToPage);
 		});
 	}
 
@@ -30,7 +34,7 @@ class PaginationView extends View {
             `;
 		}
 
-		//Last page
+		//if we are at the last page
 		if (currPage === numPages && numPages > 1) {
 			//prettier-ignore
 			return `                   

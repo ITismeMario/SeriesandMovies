@@ -1,6 +1,5 @@
 import { TIMEOUT_SEC } from './config.js';
-// import { API_KEY } from './config.js';
-import { API_KEY2 } from './config.js';
+import { API_KEY } from './config.js';
 
 const timeout = function (s) {
 	return new Promise(function (_, reject) {
@@ -15,7 +14,7 @@ export const getJSON = async function (url) {
 		const fetchIt = fetch(`${url}`, {
 			method: 'GET',
 			headers: {
-				'x-rapidapi-key': `${API_KEY2}`,
+				'x-rapidapi-key': `${API_KEY}`,
 				'x-rapidapi-host': 'imdb8.p.rapidapi.com',
 			},
 		});
