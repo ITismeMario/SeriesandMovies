@@ -14,6 +14,10 @@ class OverviewView extends View {
 		return titleId;
 	}
 
+	/**
+	 *
+	 * @param {function} fnHandler control.controlGetOverview()
+	 */
 	addHandlerRender(fnHandler) {
 		// ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, fnHandler));
 		window.addEventListener('hashchange', fnHandler);
@@ -35,15 +39,23 @@ class OverviewView extends View {
 					<h6>SUMMARY</h6>
 					<div class="line1"></div>
 					<p class="description">${this._data.summary}</p>
-					<div class="display-footer">
-						<figure class="display-fig">
-							<i class="fas fa-star rating-icon"></i>
-						</figure>
+                    <div class="display-scores">
+                        <div class="score">
+                            <figure class="display-fig">
+                                <i class="fas fa-star rating-icon"></i>
+                            </figure>
+                            <div class="display-score">${this._data.rating}</div>
+                        </div>
+                        <div class="score" id="local_score">
+                            <figure class="display-fig">
+                                <i class="fas fa-glasses rating-icon"></i>
+                            </figure>
+                            <input type="number" id="user_score" name="score" min="0" max="10" step="0.1" class="user_score" />
+                            <button type="button" class="btn_rating">Vote</button>
+                        </div>
+                    </div>
 
-						<div class="display-score">${this._data.rating}</div>
-					</div>
-
-					<!-- THE ACTORS LIST WILL GO HERE -->
+					<!-- THE ACTORS LIST GOES HERE -->
 
 				</div>
                 <div class="display-cast-header">PERFORMING</div>
