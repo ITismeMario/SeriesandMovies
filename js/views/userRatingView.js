@@ -17,8 +17,6 @@ class UserRating extends View {
 		const titleId = window.location.hash.slice(1);
 
 		btnRating.addEventListener('click', function () {
-			console.log('Button clicked');
-
 			if (!inputValidation.validateRating(txtRating.value)) {
 				alert(`ERROR: The rating you entered is not valid`);
 				txtRating.value = '';
