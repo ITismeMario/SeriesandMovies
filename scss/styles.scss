@@ -1,9 +1,11 @@
-@import './variables';
-@import './modalWinImage';
-@import './leftContainer';
-@import './rightContainer';
-@import './performers';
-@import './footer';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'variables';
+@import 'modalWinImage';
+@import 'leftContainer';
+@import 'rightContainer';
+@import 'performers';
+@import 'footer';
+@import 'overrideBootsrap';
 
 * {
 	margin: 0;

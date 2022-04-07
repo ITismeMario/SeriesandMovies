@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,aAAa,CAAC;EACb,gBAAgB,EAAe,kBAAO;CACtC;;AAED,AAAA,YAAY,CAAC;EACZ,UAAU,EAAe,kBAAO;CAChC;;AAED,AAAA,OAAO,CAAC;EACP,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CACZ",
-    "sources": [
-        "../scss/overrideBootsrap.scss"
-    ],
-    "names": [],
-    "file": "overrideBootsrap.css"
-}
