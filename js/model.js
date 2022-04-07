@@ -1,4 +1,4 @@
-import { API_CURRENT_COUNTRY, API_IMAGES_LIMIT, API_URL_IMAGES, API_URL_OVERVIEW, API_URL_TITLE, RES_PER_PAGE } from './config.js';
+import { API_IMAGES_LIMIT, RES_PER_PAGE } from './config.js';
 import { getJSON } from './helpers.js';
 
 export const state = {
@@ -24,7 +24,7 @@ export const loadSearchFindTitle = async function (query) {
 		//1. get search query
 		state.search.query = query;
 
-		const response = await getJSON(`${API_URL_TITLE}${query}`);
+		const response = await getJSON(`https://imdb8.p.rapidapi.com/title/find?q=${query}`);
 		const showsArr = Array.from(response.results);
 		//The API throws a lot of show types, but we are only interested in movies and series (and only if they have an image to display)
 		const shows = showsArr.filter((show) => (show.titleType === 'tvSeries' || show.titleType === 'movie') && 'image' in show);
@@ -85,7 +85,7 @@ const getPerformersRoles = function (principals) {
  */
 export const loadOverviewData = async function (titleId) {
 	try {
-		const response = await getJSON(`${API_URL_OVERVIEW}${titleId}${API_CURRENT_COUNTRY}`);
+		const response = await getJSON(`https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=${titleId}&currentCountry=US`);
 		state.titleIndex = state.search.results.findIndex((show) => show.id === titleId);
 		state.currrentShow = state.search.results[state.titleIndex];
 
@@ -100,7 +100,7 @@ export const loadOverviewData = async function (titleId) {
 
 export const loadImages = async function (titleId) {
 	try {
-		const response = await getJSON(`${API_URL_IMAGES}${titleId}${API_IMAGES_LIMIT}`);
+		const response = await getJSON(`https://imdb8.p.rapidapi.com/title/get-images?tconst=${titleId}${API_IMAGES_LIMIT}`);
 		state.images = response.images.map((img, imgIndex) => {
 			return {
 				url: img.url,
