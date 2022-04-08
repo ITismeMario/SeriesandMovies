@@ -1,10 +1,10 @@
 # Series & Movies
 
-This is a pure Javascript SPA inspired by the IMDB (International movie database) website
+This is a Javascript SPA inspired by the IMDB (International movie database) website
 
-## Overview
+## Execution
 
-This is the project I built after finishing the Udemy course "The Complete JavaScript Course 2021: From Zero to Expert!". It uses one of the RapidApi APIs to populate the document.
+Run the comand "npm start"
 
 ## Technologies Used
 
